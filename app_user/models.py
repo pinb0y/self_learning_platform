@@ -73,6 +73,11 @@ class User(AbstractUser):
         null=True,
         help_text='загрузите аватар',
     )
+    is_teacher = models.BooleanField(
+        verbose_name='Статус учителя',
+        default=False,
+        help_text='Укажите является ли пользователь учителем'
+    )
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

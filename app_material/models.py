@@ -28,7 +28,9 @@ class Section(models.Model):
         verbose_name='Автор',
         on_delete=models.CASCADE,
         related_name='sections',
-        help_text='Укажите автора'
+        help_text='Укажите автора',
+        blank=True,
+        null=True
     )
     created_at = models.DateTimeField(
         verbose_name='Дата создания раздела',
@@ -82,7 +84,9 @@ class Material(models.Model):
         verbose_name='Автор',
         on_delete=models.CASCADE,
         related_name='materials',
-        help_text='Укажите автора'
+        help_text='Укажите автора',
+        blank=True,
+        null=True
     )
     section = models.ForeignKey(
         Section,
@@ -129,7 +133,9 @@ class Subscription(models.Model):
         verbose_name='Пользователь',
         on_delete=models.CASCADE,
         related_name='subscriptions',
-        help_text='Укажите пользователя подписки'
+        help_text='Укажите пользователя подписки',
+        blank=True,
+        null=True
     )
     created_at = models.DateTimeField(
         verbose_name='Дата подписки',

@@ -182,6 +182,15 @@ class Answer(models.Model):
         default=False,
         help_text='Укажите является ли ответ верным'
     )
+    owner = models.ForeignKey(
+        User,
+        verbose_name='Создатель ответа',
+        on_delete=models.CASCADE,
+        related_name='answers',
+        help_text='Укажите создателя ответа',
+        null=True,
+        blank=True
+    )
     created_at = models.DateTimeField(
         verbose_name='Дата создания ответа',
         auto_now_add=True
