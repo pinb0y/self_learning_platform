@@ -1,13 +1,18 @@
+import os
 from datetime import timedelta
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-!_qth+g4+ldb4zogbu5fct#n9#=!w-*ab$!@!fa(ze9($o6ksx'
+load_dotenv(BASE_DIR / ".env")
 
-DEBUG = True
+SECRET_KEY = os.getenv("SECRET_KEY")
 
-ALLOWED_HOSTS = []
+DEBUG = os.getenv("DEBUG_MODE", False) == "True"
+
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -73,11 +78,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'slp_project',
-        'USER': 'postgres',
-        'PASSWORD': '84478447',
-        'HOST': 'localhost',
+        'ENGINE': os.getenv("DB_ENGINE"),
+        'NAME': os.getenv("POSTGRES_DB"),
+        'USER': os.getenv("POSTGRES_USER"),
+        'PASSWORD': os.getenv("POSTGRES_PASSWORD"),
+        'HOST': os.getenv("POSTGRES_HOST"),
     }
 }
 
