@@ -1,10 +1,10 @@
 from django.urls import path
 
 from app_test.apps import AppTestConfig
-from app_test.views import TestCreateAPIView, TestListAPIView, TestRetrieveAPIView, TestUpdateAPIView, \
+from app_test.views import TestCreateAPIView, TestListAPIView, TestAPIView, TestUpdateAPIView, \
     TestDestroyAPIView, QuestionCreateAPIView, QuestionListAPIView, QuestionRetrieveAPIView, QuestionUpdateAPIView, \
     QuestionDestroyAPIView, AnswerListAPIView, AnswerCreateAPIView, AnswerRetrieveAPIView, AnswerUpdateAPIView, \
-    AnswerDestroyAPIView
+    AnswerDestroyAPIView, TestTryAPIView, TestTryRetrieveAPIView, TestRetrieveAPIView
 
 app_name = AppTestConfig.name
 
@@ -26,4 +26,9 @@ urlpatterns = [
     path('answer/<int:pk>/', AnswerRetrieveAPIView.as_view(), name='answer-retrieve'),
     path('answer/update/<int:pk>/', AnswerUpdateAPIView.as_view(), name='answer-update'),
     path('answer/delete/<int:pk>/', AnswerDestroyAPIView.as_view(), name='answer-delete'),
+
+    path('try/<int:pk>/', TestAPIView.as_view(), name='test-retrieve'),
+
+    path('tt/list/', TestTryAPIView.as_view(), name='test-try-list'),
+    path('tt/<int:pk>/', TestTryRetrieveAPIView.as_view(), name='test-try-retrieve'),
 ]
