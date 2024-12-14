@@ -3,16 +3,20 @@ from rest_framework import serializers
 from app_material.models import Section, Material, Subscription
 
 
-class SectionSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Section
-        exclude = ('created_at', 'updated_at')
-
 
 class MaterialSerializer(serializers.ModelSerializer):
     class Meta:
         model = Material
         exclude = ('created_at', 'updated_at')
+
+
+class SectionSerializer(serializers.ModelSerializer):
+    materials = MaterialSerializer(many=True)
+
+
+    class Meta:
+        model = Section
+        fields = ('id', 'title', 'slug', 'description', 'preview', 'owner', 'materials')
 
 
 class SubscriptionSerializer(serializers.ModelSerializer):
