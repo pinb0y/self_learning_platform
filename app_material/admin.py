@@ -1,13 +1,14 @@
 from django.contrib import admin
 
 from app_material.models import Section, Material, Subscription
-from app_test.models import Test, Question, Answer, TestTry
 
-admin.site.register(Section)
-admin.site.register(Material)
+class SectionAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}
+
+class MaterialAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}
+
+admin.site.register(Section, SectionAdmin)
+admin.site.register(Material, MaterialAdmin)
 admin.site.register(Subscription)
-admin.site.register(Test)
-admin.site.register(Question)
-admin.site.register(Answer)
-admin.site.register(TestTry)
 

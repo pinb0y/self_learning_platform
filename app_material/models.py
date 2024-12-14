@@ -1,5 +1,6 @@
 from django.db import models
 
+from app_material.services import generate_unique_slug
 from app_user.models import User
 
 
@@ -9,6 +10,17 @@ class Section(models.Model):
         max_length=100,
         help_text='Введите название раздела'
     )
+    slug = models.SlugField(
+        verbose_name='Слаг',
+        unique=True,
+        null=True
+    )
+
+    def save(self, *args, **kwargs):
+        if not self.id and not self.slug:
+            generate_unique_slug(Material, self.title)
+        super().save(*args, **kwargs)
+
     description = models.CharField(
         verbose_name='Краткое описание раздела',
         max_length=500,
@@ -61,6 +73,18 @@ class Material(models.Model):
         max_length=100,
         help_text='Введите название статьи'
     )
+
+    slug = models.SlugField(
+        verbose_name='Слаг',
+        unique=True,
+        null=True
+    )
+
+    def save(self, *args, **kwargs):
+        if not self.id and not self.slug:
+            generate_unique_slug(Material, self.title)
+        super().save(*args, **kwargs)
+
     description = models.CharField(
         verbose_name='Краткое описание статьи',
         max_length=500,

@@ -148,10 +148,15 @@ class Question(models.Model):
         ordering = ('id',)
 
     def __str__(self):
-        return f'{self.name}'
+        return f'{self.body}'
 
 
 class Answer(models.Model):
+    number = models.PositiveSmallIntegerField(
+        verbose_name='Порядковый номер вопроса',
+        default=1,
+        help_text='Укажите порядковый номер вопроса'
+    )
     short_answer = models.CharField(
         verbose_name='Краткий ответ',
         max_length=200,
@@ -232,6 +237,11 @@ class TestTry(models.Model):
         verbose_name='Количество правильных ответов',
         default=0,
         help_text='Укажите количество правильных ответов'
+    )
+    points_quantity = models.SmallIntegerField(
+        verbose_name='Количество набранных баллов',
+        default=0,
+        help_text='Укажите количество набранных баллов'
     )
     is_passed = models.BooleanField(
         verbose_name='Статус успешности прохождения',
