@@ -3,6 +3,8 @@ from unidecode import unidecode
 
 
 def generate_unique_slug(obj, title):
+    """Преобразует название в слаг и делает его уникальным"""
+
     origin_slug = slugify(unidecode(title))
     unique_slug = origin_slug
     numb = 1

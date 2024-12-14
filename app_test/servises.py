@@ -1,17 +1,23 @@
-def check_answers(user_answer, right_answer, test_try, scores, question):
+from app_test.models import TestTry, Question
 
-    wrong_answer = None
+
+def check_answers(user_answer: int, right_answer: int, test_try: TestTry, scores: int,
+                  question: Question) -> str | None:
+    """Проверяет ответ на правильность если ответ не правильный, возвращает вопрос на который не ответили"""
+
+    question_with_wrong_answer = None
     if user_answer == right_answer:
         test_try.right_answers_quantity += 1
         test_try.points_quantity += scores
         test_try.save()
     else:
-        wrong_answer = question.name
+        question_with_wrong_answer = question.name
 
-    return wrong_answer
+    return question_with_wrong_answer
 
 
-def check_test_pass(points, points_to_pass, test_try):
+def check_test_pass(points: int, points_to_pass: int, test_try: TestTry) -> None:
+    """"Проверяет сдан ли тест, сравнивая количество необходимых баллов с набранными"""
 
     if points >= points_to_pass:
         test_try.is_passed = True

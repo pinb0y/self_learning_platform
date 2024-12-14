@@ -3,6 +3,8 @@ from app_test.models import Test, Question, Answer, TestTry
 
 
 class AnswerInlineModel(admin.TabularInline):
+    """Встраивает модель ответа на страницу вопроса"""
+
     model = Answer
     extra = 4
     fields = ('number', 'short_answer', 'full_answer', 'linked_question', 'is_true', 'owner')

@@ -17,6 +17,8 @@ class Section(models.Model):
     )
 
     def save(self, *args, **kwargs):
+        """Сохраняет в поле слаг обработанное названия статьи"""
+
         if not self.id and not self.slug:
             generate_unique_slug(Material, self.title)
         super().save(*args, **kwargs)
@@ -81,6 +83,8 @@ class Material(models.Model):
     )
 
     def save(self, *args, **kwargs):
+        """Сохраняет в поле слаг обработанное названия статьи"""
+
         if not self.id and not self.slug:
             generate_unique_slug(Material, self.title)
         super().save(*args, **kwargs)
