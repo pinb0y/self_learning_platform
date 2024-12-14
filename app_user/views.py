@@ -1,4 +1,10 @@
-from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView
+from rest_framework.generics import (
+    CreateAPIView,
+    ListAPIView,
+    RetrieveAPIView,
+    UpdateAPIView,
+    DestroyAPIView,
+)
 from rest_framework.permissions import AllowAny
 
 from app_user.Serializers import UserSerializer, UserRegisterSerializer
@@ -28,10 +34,12 @@ class UserRetrieveApiView(RetrieveAPIView):
     queryset = User.objects.all()
     permission_classes = (IsAdmin | IsOwner,)
 
+
 class UserUpdateApiView(UpdateAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
     permission_classes = (IsAdmin | IsOwner,)
+
 
 class UserDestroyApiView(DestroyAPIView):
     serializer_class = UserSerializer

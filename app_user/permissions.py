@@ -2,7 +2,7 @@ from rest_framework import permissions
 
 
 class IsOwner(permissions.BasePermission):
-    """Класс для проверки доступа если пользователь владельца объекта """
+    """Класс для проверки доступа если пользователь владельца объекта"""
 
     def has_object_permission(self, request, view, obj):
         if hasattr(obj, 'user'):

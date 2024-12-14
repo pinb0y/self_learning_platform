@@ -13,6 +13,12 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='user',
             name='telegram_nik',
-            field=models.CharField(blank=True, help_text='Введите ник телеграма', max_length=100, null=True, verbose_name='Телеграм'),
+            field=models.CharField(
+                blank=True,
+                help_text='Введите ник телеграма',
+                max_length=100,
+                null=True,
+                verbose_name='Телеграм',
+            ),
         ),
     ]

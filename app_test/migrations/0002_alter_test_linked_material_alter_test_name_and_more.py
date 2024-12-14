@@ -15,21 +15,39 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='test',
             name='linked_material',
-            field=models.ForeignKey(blank=True, help_text='Укажите связанный материал', null=True, on_delete=django.db.models.deletion.CASCADE, related_name='tests', to='app_material.material', verbose_name='Связанный материал'),
+            field=models.ForeignKey(
+                blank=True,
+                help_text='Укажите связанный материал',
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='tests',
+                to='app_material.material',
+                verbose_name='Связанный материал',
+            ),
         ),
         migrations.AlterField(
             model_name='test',
             name='name',
-            field=models.CharField(help_text='Введите название теста', max_length=100, verbose_name='Название теста'),
+            field=models.CharField(
+                help_text='Введите название теста',
+                max_length=100,
+                verbose_name='Название теста',
+            ),
         ),
         migrations.AlterField(
             model_name='testtry',
             name='is_passed',
-            field=models.BooleanField(default=False, verbose_name='Статус успешности прохождения'),
+            field=models.BooleanField(
+                default=False, verbose_name='Статус успешности прохождения'
+            ),
         ),
         migrations.AlterField(
             model_name='testtry',
             name='right_answers_quantity',
-            field=models.SmallIntegerField(default=0, help_text='Укажите количество правильных ответов', verbose_name='Количество правильных ответов'),
+            field=models.SmallIntegerField(
+                default=0,
+                help_text='Укажите количество правильных ответов',
+                verbose_name='Количество правильных ответов',
+            ),
         ),
     ]

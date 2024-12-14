@@ -41,9 +41,7 @@ class UserManager(BaseUserManager):
 class User(AbstractUser):
     username = None
     email = models.EmailField(
-        unique=True,
-        verbose_name='Почта',
-        help_text='Введите почту'
+        unique=True, verbose_name='Почта', help_text='Введите почту'
     )
     phone = models.CharField(
         max_length=30,
@@ -76,7 +74,7 @@ class User(AbstractUser):
     is_teacher = models.BooleanField(
         verbose_name='Статус учителя',
         default=False,
-        help_text='Укажите является ли пользователь учителем'
+        help_text='Укажите является ли пользователь учителем',
     )
 
     USERNAME_FIELD = 'email'

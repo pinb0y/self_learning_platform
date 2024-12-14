@@ -7,7 +7,14 @@ class AnswerInlineModel(admin.TabularInline):
 
     model = Answer
     extra = 4
-    fields = ('number', 'short_answer', 'full_answer', 'linked_question', 'is_true', 'owner')
+    fields = (
+        'number',
+        'short_answer',
+        'full_answer',
+        'linked_question',
+        'is_true',
+        'owner',
+    )
 
 
 class QuestionAdmin(admin.ModelAdmin):

@@ -1,4 +1,10 @@
-from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView
+from rest_framework.generics import (
+    CreateAPIView,
+    ListAPIView,
+    RetrieveAPIView,
+    UpdateAPIView,
+    DestroyAPIView,
+)
 
 from app_material.models import Section, Material
 from app_material.serializers import SectionSerializer, MaterialSerializer
@@ -8,8 +14,10 @@ from app_user.permissions import IsOwner, IsTeacher, IsAdmin
 
 # __________________Section_______________________________
 
+
 class SectionCreateAPIView(CreateAPIView):
     """Отображение для создания раздела"""
+
     serializer_class = SectionSerializer
     queryset = Section.objects.all()
     permission_classes = (IsTeacher | IsAdmin,)
@@ -57,8 +65,10 @@ class SectionDestroyAPIView(DestroyAPIView):
 
 # __________________Material________________________
 
+
 class MaterialCreateAPIView(CreateAPIView):
     """Отображение для создания статьи"""
+
     serializer_class = MaterialSerializer
     queryset = Material.objects.all()
     permission_classes = (IsTeacher | IsAdmin,)

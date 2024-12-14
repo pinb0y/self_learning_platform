@@ -13,6 +13,10 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='user',
             name='is_teacher',
-            field=models.BooleanField(default=False, help_text='Укажите является ли пользователь учителем', verbose_name='Статус учителя'),
+            field=models.BooleanField(
+                default=False,
+                help_text='Укажите является ли пользователь учителем',
+                verbose_name='Статус учителя',
+            ),
         ),
     ]

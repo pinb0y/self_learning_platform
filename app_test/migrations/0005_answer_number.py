@@ -13,6 +13,10 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='answer',
             name='number',
-            field=models.PositiveSmallIntegerField(default=1, help_text='Укажите порядковый номер вопроса', verbose_name='Порядковый номер вопроса'),
+            field=models.PositiveSmallIntegerField(
+                default=1,
+                help_text='Укажите порядковый номер вопроса',
+                verbose_name='Порядковый номер вопроса',
+            ),
         ),
     ]

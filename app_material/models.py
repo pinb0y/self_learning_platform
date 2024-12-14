@@ -8,13 +8,9 @@ class Section(models.Model):
     title = models.CharField(
         verbose_name='Название раздела',
         max_length=100,
-        help_text='Введите название раздела'
+        help_text='Введите название раздела',
     )
-    slug = models.SlugField(
-        verbose_name='Слаг',
-        unique=True,
-        null=True
-    )
+    slug = models.SlugField(verbose_name='Слаг', unique=True, null=True)
 
     def save(self, *args, **kwargs):
         """Сохраняет в поле слаг обработанное названия статьи"""
@@ -28,14 +24,14 @@ class Section(models.Model):
         max_length=500,
         help_text='Напишите краткое описание',
         blank=True,
-        null=True
+        null=True,
     )
     preview = models.ImageField(
         verbose_name='Картинка раздела',
         upload_to='app_material/section/preview',
         help_text='Добавьте картинку раздела',
         blank=True,
-        null=True
+        null=True,
     )
     owner = models.ForeignKey(
         User,
@@ -44,20 +40,18 @@ class Section(models.Model):
         related_name='sections',
         help_text='Укажите автора',
         blank=True,
-        null=True
+        null=True,
     )
     created_at = models.DateTimeField(
-        verbose_name='Дата создания раздела',
-        auto_now_add=True
+        verbose_name='Дата создания раздела', auto_now_add=True
     )
     updated_at = models.DateTimeField(
-        verbose_name='Дата изменения раздела',
-        auto_now=True
+        verbose_name='Дата изменения раздела', auto_now=True
     )
     is_published = models.BooleanField(
         verbose_name='Статус публичности',
         default=True,
-        help_text='укажите статус публичности'
+        help_text='укажите статус публичности',
     )
 
     class Meta:
@@ -73,14 +67,10 @@ class Material(models.Model):
     title = models.CharField(
         verbose_name='Название статьи',
         max_length=100,
-        help_text='Введите название статьи'
+        help_text='Введите название статьи',
     )
 
-    slug = models.SlugField(
-        verbose_name='Слаг',
-        unique=True,
-        null=True
-    )
+    slug = models.SlugField(verbose_name='Слаг', unique=True, null=True)
 
     def save(self, *args, **kwargs):
         """Сохраняет в поле слаг обработанное названия статьи"""
@@ -94,18 +84,17 @@ class Material(models.Model):
         max_length=500,
         help_text='Напишите краткое описание',
         blank=True,
-        null=True
+        null=True,
     )
     body = models.TextField(
-        verbose_name='Текст статьи',
-        help_text='Введите текст статьи'
+        verbose_name='Текст статьи', help_text='Введите текст статьи'
     )
     preview = models.ImageField(
         verbose_name='Картинка материала',
         upload_to='app_material/material/preview',
         help_text='Добавьте картинку статьи',
         blank=True,
-        null=True
+        null=True,
     )
     owner = models.ForeignKey(
         User,
@@ -114,27 +103,25 @@ class Material(models.Model):
         related_name='materials',
         help_text='Укажите автора',
         blank=True,
-        null=True
+        null=True,
     )
     section = models.ForeignKey(
         Section,
         verbose_name='Раздел',
         on_delete=models.CASCADE,
         related_name='materials',
-        help_text='Укажите Раздел статьи'
+        help_text='Укажите Раздел статьи',
     )
     created_at = models.DateTimeField(
-        verbose_name='Дата создания статьи',
-        auto_now_add=True
+        verbose_name='Дата создания статьи', auto_now_add=True
     )
     updated_at = models.DateTimeField(
-        verbose_name='Дата изменения статьи',
-        auto_now=True
+        verbose_name='Дата изменения статьи', auto_now=True
     )
     is_published = models.BooleanField(
         verbose_name='Статус публичности',
         default=True,
-        help_text='укажите статус публичности'
+        help_text='укажите статус публичности',
     )
 
     class Meta:
@@ -154,7 +141,7 @@ class Subscription(models.Model):
         related_name='subscriptions',
         help_text='Укажите раздел для подписки',
         blank=True,
-        null=True
+        null=True,
     )
     owner = models.ForeignKey(
         User,
@@ -163,20 +150,16 @@ class Subscription(models.Model):
         related_name='subscriptions',
         help_text='Укажите пользователя подписки',
         blank=True,
-        null=True
+        null=True,
     )
-    created_at = models.DateTimeField(
-        verbose_name='Дата подписки',
-        auto_now_add=True
-    )
+    created_at = models.DateTimeField(verbose_name='Дата подписки', auto_now_add=True)
     updated_at = models.DateTimeField(
-        verbose_name='Дата изменения подписки',
-        auto_now=True
+        verbose_name='Дата изменения подписки', auto_now=True
     )
     is_active = models.BooleanField(
         verbose_name='Статус активности',
         default=False,
-        help_text='укажите статус активности'
+        help_text='укажите статус активности',
     )
 
     class Meta:

@@ -16,16 +16,40 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='material',
             name='owner',
-            field=models.ForeignKey(blank=True, help_text='Укажите автора', null=True, on_delete=django.db.models.deletion.CASCADE, related_name='materials', to=settings.AUTH_USER_MODEL, verbose_name='Автор'),
+            field=models.ForeignKey(
+                blank=True,
+                help_text='Укажите автора',
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='materials',
+                to=settings.AUTH_USER_MODEL,
+                verbose_name='Автор',
+            ),
         ),
         migrations.AlterField(
             model_name='section',
             name='owner',
-            field=models.ForeignKey(blank=True, help_text='Укажите автора', null=True, on_delete=django.db.models.deletion.CASCADE, related_name='sections', to=settings.AUTH_USER_MODEL, verbose_name='Автор'),
+            field=models.ForeignKey(
+                blank=True,
+                help_text='Укажите автора',
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='sections',
+                to=settings.AUTH_USER_MODEL,
+                verbose_name='Автор',
+            ),
         ),
         migrations.AlterField(
             model_name='subscription',
             name='owner',
-            field=models.ForeignKey(blank=True, help_text='Укажите пользователя подписки', null=True, on_delete=django.db.models.deletion.CASCADE, related_name='subscriptions', to=settings.AUTH_USER_MODEL, verbose_name='Пользователь'),
+            field=models.ForeignKey(
+                blank=True,
+                help_text='Укажите пользователя подписки',
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='subscriptions',
+                to=settings.AUTH_USER_MODEL,
+                verbose_name='Пользователь',
+            ),
         ),
     ]

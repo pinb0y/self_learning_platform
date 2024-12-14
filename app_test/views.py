@@ -1,16 +1,28 @@
 from rest_framework import status
-from rest_framework.generics import CreateAPIView, ListAPIView, get_object_or_404, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import (
+    CreateAPIView,
+    ListAPIView,
+    get_object_or_404,
+    RetrieveUpdateDestroyAPIView,
+)
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from app_test.models import Test, Question, Answer, TestTry
-from app_test.serializers import TestSerializer, QuestionSerializer, AnswerSerializer, TestTrySerializer, QuizSerializer
+from app_test.serializers import (
+    TestSerializer,
+    QuestionSerializer,
+    AnswerSerializer,
+    TestTrySerializer,
+    QuizSerializer,
+)
 from app_test.servises import check_answers, check_test_pass
 from app_user.models import User
 from app_user.permissions import IsTeacher, IsAdmin, IsOwner
 
 
 # __________________Test________________________
+
 
 class TestCreateAPIView(CreateAPIView):
     """Отображение для создания теста"""
@@ -45,6 +57,7 @@ class TestAPIView(RetrieveUpdateDestroyAPIView):
 
 # __________________Question________________________
 
+
 class QuestionCreateAPIView(CreateAPIView):
     """Отображение для создания вопроса"""
 
@@ -77,6 +90,7 @@ class QuestionAPIView(RetrieveUpdateDestroyAPIView):
 
 
 # __________________Answer________________________
+
 
 class AnswerCreateAPIView(CreateAPIView):
     """Отображение для создания ответа"""
@@ -111,6 +125,7 @@ class AnswerAPIView(RetrieveUpdateDestroyAPIView):
 
 # __________________TestTry________________________
 
+
 class TestTryListAPIView(ListAPIView):
     """Отображение для вывода списка попыток сдачи теста"""
 
@@ -140,7 +155,9 @@ class QuizAPIView(APIView):
 
         test_item = get_object_or_404(Test, pk=kwargs['pk'])
 
-        test_try, _ = TestTry.objects.get_or_create(linked_user=user, linked_test=test_item)
+        test_try, _ = TestTry.objects.get_or_create(
+            linked_user=user, linked_test=test_item
+        )
         serializer = QuizSerializer(test_item)
 
         response = serializer.data
@@ -154,16 +171,27 @@ class QuizAPIView(APIView):
         user_answer = request.data.get('answers')
         test_item = get_object_or_404(Test, pk=pk)
         questions = Question.objects.filter(linked_test=test_item)
-        test_try, _ = TestTry.objects.get_or_create(linked_user=user, linked_test=test_item)
+        test_try, _ = TestTry.objects.get_or_create(
+            linked_user=user, linked_test=test_item
+        )
         points_to_pass = test_item.points_to_success
         questions_with_wrong_answer = []
 
         for answer_id, question in enumerate(questions):
-            answer = Answer.objects.filter(linked_question=question).filter(is_true=True).first().number
+            answer = (
+                Answer.objects.filter(linked_question=question)
+                .filter(is_true=True)
+                .first()
+                .number
+            )
             scores = question.points_per_answer
-            question_with_wrong_answer = check_answers(question=question, user_answer=user_answer[answer_id],
-                                                       right_answer=answer,
-                                                       scores=scores, test_try=test_try)
+            question_with_wrong_answer = check_answers(
+                question=question,
+                user_answer=user_answer[answer_id],
+                right_answer=answer,
+                scores=scores,
+                test_try=test_try,
+            )
             if question_with_wrong_answer:
                 questions_with_wrong_answer.append(question_with_wrong_answer)
 
@@ -181,6 +209,6 @@ class QuizAPIView(APIView):
             response = {
                 'results': 'К сожалению тест не пройден',
                 'wrong_answers_quantity': f'Вы ответили неправильно на {test_item.questions_quantity - test_try.right_answers_quantity} вопросов',
-                'wrong_answers': f'Не отвеченные вопросы {questions_with_wrong_answer}'
+                'wrong_answers': f'Не отвеченные вопросы {questions_with_wrong_answer}',
             }
         return Response(response, status.HTTP_200_OK)

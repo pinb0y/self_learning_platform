@@ -26,7 +26,6 @@ INSTALLED_APPS = [
     'drf_yasg',
     "django_filters",
     "corsheaders",
-
     'app_user',
     'app_material',
     'app_test',

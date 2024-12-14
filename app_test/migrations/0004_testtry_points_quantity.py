@@ -13,6 +13,10 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='testtry',
             name='points_quantity',
-            field=models.SmallIntegerField(default=0, help_text='Укажите количество набранных баллов', verbose_name='Количество набранных баллов'),
+            field=models.SmallIntegerField(
+                default=0,
+                help_text='Укажите количество набранных баллов',
+                verbose_name='Количество набранных баллов',
+            ),
         ),
     ]

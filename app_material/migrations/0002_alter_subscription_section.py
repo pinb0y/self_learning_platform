@@ -14,6 +14,14 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='subscription',
             name='section',
-            field=models.ForeignKey(blank=True, help_text='Укажите раздел для подписки', null=True, on_delete=django.db.models.deletion.CASCADE, related_name='subscriptions', to='app_material.section', verbose_name='Раздел'),
+            field=models.ForeignKey(
+                blank=True,
+                help_text='Укажите раздел для подписки',
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='subscriptions',
+                to='app_material.section',
+                verbose_name='Раздел',
+            ),
         ),
     ]

@@ -16,6 +16,14 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='answer',
             name='owner',
-            field=models.ForeignKey(blank=True, help_text='Укажите создателя ответа', null=True, on_delete=django.db.models.deletion.CASCADE, related_name='answers', to=settings.AUTH_USER_MODEL, verbose_name='Создатель ответа'),
+            field=models.ForeignKey(
+                blank=True,
+                help_text='Укажите создателя ответа',
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='answers',
+                to=settings.AUTH_USER_MODEL,
+                verbose_name='Создатель ответа',
+            ),
         ),
     ]
