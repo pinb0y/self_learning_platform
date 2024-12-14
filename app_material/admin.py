@@ -13,4 +13,4 @@ class MaterialAdmin(admin.ModelAdmin):
 
 admin.site.register(Section, SectionAdmin)
 admin.site.register(Material, MaterialAdmin)
-admin.site.register(Subscription)
+# admin.site.register(Subscription)

@@ -152,9 +152,7 @@ class QuizAPIView(APIView):
         """Выводит тест с вопросами и вариантами ответов для прохождения"""
 
         user = self.request.user
-
         test_item = get_object_or_404(Test, pk=kwargs['pk'])
-
         test_try, _ = TestTry.objects.get_or_create(
             linked_user=user, linked_test=test_item
         )
@@ -201,9 +199,9 @@ class QuizAPIView(APIView):
 
         if test_try.is_passed:
             response = {
-                'result': 'Тест успешно пройдет. Поздравляем!',
+                'result': 'Тест успешно пройдет. Поздравляю!',
                 'right_answers': f'Отвечено на {test_try.right_answers_quantity} из {test_item.questions_quantity}',
-                'scores': f'Набрано {test_try.points_quantity} очков',
+                'scores': f'Набрано {test_try.points_quantity} очков.',
             }
         else:
             response = {

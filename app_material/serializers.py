@@ -21,9 +21,9 @@ class SectionSerializer(serializers.ModelSerializer):
         fields = ('id', 'title', 'slug', 'description', 'preview', 'owner', 'materials')
 
 
-class SubscriptionSerializer(serializers.ModelSerializer):
-    """Сериалайзер для отображения подписок. Планируется в будущем"""
-
-    class Meta:
-        model = Subscription
-        exclude = ('created_at', 'updated_at')
+# class SubscriptionSerializer(serializers.ModelSerializer):
+#     """Сериалайзер для отображения подписок. Планируется в будущем"""
+#
+#     class Meta:
+#         model = Subscription
+#         exclude = ('created_at', 'updated_at')
