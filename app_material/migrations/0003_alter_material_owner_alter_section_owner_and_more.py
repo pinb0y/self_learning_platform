@@ -8,48 +8,48 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('app_material', '0002_alter_subscription_section'),
+        ("app_material", "0002_alter_subscription_section"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='material',
-            name='owner',
+            model_name="material",
+            name="owner",
             field=models.ForeignKey(
                 blank=True,
-                help_text='Укажите автора',
+                help_text="Укажите автора",
                 null=True,
                 on_delete=django.db.models.deletion.CASCADE,
-                related_name='materials',
+                related_name="materials",
                 to=settings.AUTH_USER_MODEL,
-                verbose_name='Автор',
+                verbose_name="Автор",
             ),
         ),
         migrations.AlterField(
-            model_name='section',
-            name='owner',
+            model_name="section",
+            name="owner",
             field=models.ForeignKey(
                 blank=True,
-                help_text='Укажите автора',
+                help_text="Укажите автора",
                 null=True,
                 on_delete=django.db.models.deletion.CASCADE,
-                related_name='sections',
+                related_name="sections",
                 to=settings.AUTH_USER_MODEL,
-                verbose_name='Автор',
+                verbose_name="Автор",
             ),
         ),
         migrations.AlterField(
-            model_name='subscription',
-            name='owner',
+            model_name="subscription",
+            name="owner",
             field=models.ForeignKey(
                 blank=True,
-                help_text='Укажите пользователя подписки',
+                help_text="Укажите пользователя подписки",
                 null=True,
                 on_delete=django.db.models.deletion.CASCADE,
-                related_name='subscriptions',
+                related_name="subscriptions",
                 to=settings.AUTH_USER_MODEL,
-                verbose_name='Пользователь',
+                verbose_name="Пользователь",
             ),
         ),
     ]

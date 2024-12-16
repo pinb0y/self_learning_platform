@@ -9,10 +9,10 @@ class AnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answer
         fields = (
-            'number',
-            'short_answer',
-            'full_answer',
-            'is_true',
+            "number",
+            "short_answer",
+            "full_answer",
+            "is_true",
         )
 
 
@@ -21,7 +21,7 @@ class QuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Question
-        fields = ('name', 'body')
+        fields = ("name", "body")
 
 
 class QuizQuestionSerializer(serializers.ModelSerializer):
@@ -31,7 +31,7 @@ class QuizQuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Question
-        fields = ('body', 'answers')
+        fields = ("body", "answers")
 
 
 class TestSerializer(serializers.ModelSerializer):
@@ -42,11 +42,11 @@ class TestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Test
         fields = (
-            'name',
-            'linked_section',
-            'linked_material',
-            'points_to_success',
-            'questions',
+            "name",
+            "linked_section",
+            "linked_material",
+            "points_to_success",
+            "questions",
         )
 
 
@@ -57,7 +57,7 @@ class QuizSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Test
-        fields = ('name', 'questions')
+        fields = ("name", "questions")
 
 
 class TestTrySerializer(serializers.ModelSerializer):
@@ -65,4 +65,4 @@ class TestTrySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TestTry
-        exclude = ('created_at', 'updated_at')
+        exclude = ("created_at", "updated_at")

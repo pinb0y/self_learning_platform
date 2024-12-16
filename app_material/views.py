@@ -42,7 +42,7 @@ class SectionRetrieveAPIView(RetrieveAPIView):
 
     serializer_class = SectionSerializer
     queryset = Section.objects.all()
-    lookup_field = 'slug'
+    lookup_field = "slug"
 
 
 class SectionUpdateAPIView(UpdateAPIView):
@@ -51,7 +51,7 @@ class SectionUpdateAPIView(UpdateAPIView):
     serializer_class = SectionSerializer
     queryset = Section.objects.all()
     permission_classes = (IsOwner | IsAdmin,)
-    lookup_field = 'slug'
+    lookup_field = "slug"
 
 
 class SectionDestroyAPIView(DestroyAPIView):
@@ -60,7 +60,7 @@ class SectionDestroyAPIView(DestroyAPIView):
     serializer_class = SectionSerializer
     queryset = Section.objects.all()
     permission_classes = (IsOwner | IsAdmin,)
-    lookup_field = 'slug'
+    lookup_field = "slug"
 
 
 # __________________Material________________________
@@ -77,7 +77,7 @@ class MaterialCreateAPIView(CreateAPIView):
         """При создании записывает в поле владельца текущего пользователя"""
 
         if isinstance(self.request.user, User):
-            serializer.save(user=self.request.user)
+            serializer.save(owner=self.request.user)
         serializer.save()
 
 
@@ -92,8 +92,8 @@ class MaterialRetrieveAPIView(RetrieveAPIView):
     """Отображение для вывода статьи"""
 
     serializer_class = MaterialSerializer
-    queryset = Section.objects.all()
-    lookup_field = 'slug'
+    queryset = Material.objects.all()
+    lookup_field = "slug"
 
 
 class MaterialUpdateAPIView(UpdateAPIView):
@@ -102,7 +102,7 @@ class MaterialUpdateAPIView(UpdateAPIView):
     serializer_class = MaterialSerializer
     queryset = Material.objects.all()
     permission_classes = (IsOwner | IsAdmin,)
-    lookup_field = 'slug'
+    lookup_field = "slug"
 
 
 class MaterialDestroyAPIView(DestroyAPIView):
@@ -111,4 +111,4 @@ class MaterialDestroyAPIView(DestroyAPIView):
     serializer_class = MaterialSerializer
     queryset = Material.objects.all()
     permission_classes = (IsOwner | IsAdmin,)
-    lookup_field = 'slug'
+    lookup_field = "slug"

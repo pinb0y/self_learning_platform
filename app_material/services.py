@@ -9,6 +9,6 @@ def generate_unique_slug(obj, title):
     unique_slug = origin_slug
     numb = 1
     while obj.objects.filter(slug=unique_slug).exists():
-        unique_slug = f'{origin_slug}-{numb}'
+        unique_slug = f"{origin_slug}-{numb}"
         numb += 1
     return unique_slug

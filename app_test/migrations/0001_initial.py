@@ -10,383 +10,383 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('app_material', '0001_initial'),
+        ("app_material", "0001_initial"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Question',
+            name="Question",
             fields=[
                 (
-                    'id',
+                    "id",
                     models.BigAutoField(
                         auto_created=True,
                         primary_key=True,
                         serialize=False,
-                        verbose_name='ID',
+                        verbose_name="ID",
                     ),
                 ),
                 (
-                    'name',
+                    "name",
                     models.CharField(
-                        help_text='Введите название вопроса',
+                        help_text="Введите название вопроса",
                         max_length=100,
-                        verbose_name='Название вопроса',
+                        verbose_name="Название вопроса",
                     ),
                 ),
                 (
-                    'body',
+                    "body",
                     models.TextField(
-                        help_text='Введите текст вопроса', verbose_name='Текст вопроса'
+                        help_text="Введите текст вопроса", verbose_name="Текст вопроса"
                     ),
                 ),
                 (
-                    'picture',
+                    "picture",
                     models.ImageField(
                         blank=True,
-                        help_text='Добавьте картинку вопроса',
+                        help_text="Добавьте картинку вопроса",
                         null=True,
-                        upload_to='app_test/questions/picture',
-                        verbose_name='Картинка вопроса',
+                        upload_to="app_test/questions/picture",
+                        verbose_name="Картинка вопроса",
                     ),
                 ),
                 (
-                    'points_per_answer',
+                    "points_per_answer",
                     models.PositiveSmallIntegerField(
                         default=10,
-                        help_text='Введите количество очков за правильный ответ',
-                        verbose_name='Количество очков за ответ',
+                        help_text="Введите количество очков за правильный ответ",
+                        verbose_name="Количество очков за ответ",
                     ),
                 ),
                 (
-                    'answers_quantity',
+                    "answers_quantity",
                     models.PositiveSmallIntegerField(
                         default=4,
-                        help_text='Укажите количество правильных ответов',
-                        verbose_name='Количество вариантов ответа',
+                        help_text="Укажите количество правильных ответов",
+                        verbose_name="Количество вариантов ответа",
                     ),
                 ),
                 (
-                    'created_at',
+                    "created_at",
                     models.DateTimeField(
-                        auto_now_add=True, verbose_name='Дата создания вопроса'
+                        auto_now_add=True, verbose_name="Дата создания вопроса"
                     ),
                 ),
                 (
-                    'updated_at',
+                    "updated_at",
                     models.DateTimeField(
-                        auto_now=True, verbose_name='Дата изменения вопроса'
+                        auto_now=True, verbose_name="Дата изменения вопроса"
                     ),
                 ),
                 (
-                    'is_published',
+                    "is_published",
                     models.BooleanField(
                         default=True,
-                        help_text='укажите статус публичности',
-                        verbose_name='Статус публичности',
+                        help_text="укажите статус публичности",
+                        verbose_name="Статус публичности",
                     ),
                 ),
                 (
-                    'owner',
+                    "owner",
                     models.ForeignKey(
                         blank=True,
-                        help_text='Укажите создателя вопроса',
+                        help_text="Укажите создателя вопроса",
                         null=True,
                         on_delete=django.db.models.deletion.CASCADE,
-                        related_name='questions',
+                        related_name="questions",
                         to=settings.AUTH_USER_MODEL,
-                        verbose_name='Создатель вопроса',
+                        verbose_name="Создатель вопроса",
                     ),
                 ),
             ],
             options={
-                'verbose_name': 'Вопрос',
-                'verbose_name_plural': 'Вопросы',
-                'ordering': ('id',),
+                "verbose_name": "Вопрос",
+                "verbose_name_plural": "Вопросы",
+                "ordering": ("id",),
             },
         ),
         migrations.CreateModel(
-            name='Answer',
+            name="Answer",
             fields=[
                 (
-                    'id',
+                    "id",
                     models.BigAutoField(
                         auto_created=True,
                         primary_key=True,
                         serialize=False,
-                        verbose_name='ID',
+                        verbose_name="ID",
                     ),
                 ),
                 (
-                    'short_answer',
+                    "short_answer",
                     models.CharField(
-                        help_text='Введите краткий ответ',
+                        help_text="Введите краткий ответ",
                         max_length=200,
-                        verbose_name='Краткий ответ',
+                        verbose_name="Краткий ответ",
                     ),
                 ),
                 (
-                    'full_answer',
+                    "full_answer",
                     models.TextField(
                         blank=True,
-                        help_text='Введите полный текст ответа',
+                        help_text="Введите полный текст ответа",
                         null=True,
-                        verbose_name='Полный текста ответа',
+                        verbose_name="Полный текста ответа",
                     ),
                 ),
                 (
-                    'picture',
+                    "picture",
                     models.ImageField(
                         blank=True,
-                        help_text='Добавьте картинку ответа',
+                        help_text="Добавьте картинку ответа",
                         null=True,
-                        upload_to='app_test/answer/picture',
-                        verbose_name='Картинка ответа',
+                        upload_to="app_test/answer/picture",
+                        verbose_name="Картинка ответа",
                     ),
                 ),
                 (
-                    'is_true',
+                    "is_true",
                     models.BooleanField(
                         default=False,
-                        help_text='Укажите является ли ответ верным',
-                        verbose_name='Статус верного ответа',
+                        help_text="Укажите является ли ответ верным",
+                        verbose_name="Статус верного ответа",
                     ),
                 ),
                 (
-                    'created_at',
+                    "created_at",
                     models.DateTimeField(
-                        auto_now_add=True, verbose_name='Дата создания ответа'
+                        auto_now_add=True, verbose_name="Дата создания ответа"
                     ),
                 ),
                 (
-                    'updated_at',
+                    "updated_at",
                     models.DateTimeField(
-                        auto_now=True, verbose_name='Дата изменения ответа'
+                        auto_now=True, verbose_name="Дата изменения ответа"
                     ),
                 ),
                 (
-                    'is_published',
+                    "is_published",
                     models.BooleanField(
                         default=True,
-                        help_text='укажите статус публичности',
-                        verbose_name='Статус публичности',
+                        help_text="укажите статус публичности",
+                        verbose_name="Статус публичности",
                     ),
                 ),
                 (
-                    'linked_question',
+                    "linked_question",
                     models.ForeignKey(
-                        help_text='Выберете связанный вопрос',
+                        help_text="Выберете связанный вопрос",
                         on_delete=django.db.models.deletion.CASCADE,
-                        related_name='answers',
-                        to='app_test.question',
-                        verbose_name='Связанный вопрос',
+                        related_name="answers",
+                        to="app_test.question",
+                        verbose_name="Связанный вопрос",
                     ),
                 ),
             ],
             options={
-                'verbose_name': 'Ответ',
-                'verbose_name_plural': 'Ответы',
-                'ordering': ('id',),
+                "verbose_name": "Ответ",
+                "verbose_name_plural": "Ответы",
+                "ordering": ("id",),
             },
         ),
         migrations.CreateModel(
-            name='Test',
+            name="Test",
             fields=[
                 (
-                    'id',
+                    "id",
                     models.BigAutoField(
                         auto_created=True,
                         primary_key=True,
                         serialize=False,
-                        verbose_name='ID',
+                        verbose_name="ID",
                     ),
                 ),
                 (
-                    'name',
+                    "name",
                     models.CharField(
-                        help_text='Введите название теста',
+                        help_text="Введите название теста",
                         max_length=100,
-                        verbose_name='Название Теста',
+                        verbose_name="Название Теста",
                     ),
                 ),
                 (
-                    'description',
+                    "description",
                     models.TextField(
                         blank=True,
-                        help_text='Введите описание теста',
+                        help_text="Введите описание теста",
                         null=True,
-                        verbose_name='Описание теста',
+                        verbose_name="Описание теста",
                     ),
                 ),
                 (
-                    'preview',
+                    "preview",
                     models.ImageField(
                         blank=True,
-                        help_text='Добавьте картинку теста',
+                        help_text="Добавьте картинку теста",
                         null=True,
-                        upload_to='app_test/test/preview',
-                        verbose_name='Картинка теста',
+                        upload_to="app_test/test/preview",
+                        verbose_name="Картинка теста",
                     ),
                 ),
                 (
-                    'questions_quantity',
+                    "questions_quantity",
                     models.PositiveSmallIntegerField(
                         default=10,
-                        help_text='Укажите количество вопросов в тексте',
-                        verbose_name='Количество вопросов в тесте',
+                        help_text="Укажите количество вопросов в тексте",
+                        verbose_name="Количество вопросов в тесте",
                     ),
                 ),
                 (
-                    'lead_time',
+                    "lead_time",
                     models.PositiveSmallIntegerField(
                         default=10,
-                        help_text='Укажите количество минут на выполнение теста',
-                        verbose_name='Время на выполнение теста в минутах',
+                        help_text="Укажите количество минут на выполнение теста",
+                        verbose_name="Время на выполнение теста в минутах",
                     ),
                 ),
                 (
-                    'points_to_success',
+                    "points_to_success",
                     models.PositiveSmallIntegerField(
                         default=90,
-                        help_text='Укажите количество баллов для успешного прохождения',
-                        verbose_name='Количество баллов для успешного прохождения',
+                        help_text="Укажите количество баллов для успешного прохождения",
+                        verbose_name="Количество баллов для успешного прохождения",
                     ),
                 ),
                 (
-                    'created_at',
+                    "created_at",
                     models.DateTimeField(
-                        auto_now_add=True, verbose_name='Дата создания теста'
+                        auto_now_add=True, verbose_name="Дата создания теста"
                     ),
                 ),
                 (
-                    'updated_at',
+                    "updated_at",
                     models.DateTimeField(
-                        auto_now=True, verbose_name='Дата изменения теста'
+                        auto_now=True, verbose_name="Дата изменения теста"
                     ),
                 ),
                 (
-                    'is_published',
+                    "is_published",
                     models.BooleanField(
                         default=True,
-                        help_text='укажите статус публичности',
-                        verbose_name='Статус публичности',
+                        help_text="укажите статус публичности",
+                        verbose_name="Статус публичности",
                     ),
                 ),
                 (
-                    'linked_material',
+                    "linked_material",
                     models.ForeignKey(
                         blank=True,
-                        help_text='Укажите связанный раздел',
+                        help_text="Укажите связанный раздел",
                         null=True,
                         on_delete=django.db.models.deletion.CASCADE,
-                        related_name='tests',
-                        to='app_material.material',
-                        verbose_name='Связанный материал',
+                        related_name="tests",
+                        to="app_material.material",
+                        verbose_name="Связанный материал",
                     ),
                 ),
                 (
-                    'linked_section',
+                    "linked_section",
                     models.ForeignKey(
                         blank=True,
-                        help_text='Укажите связанный раздел',
+                        help_text="Укажите связанный раздел",
                         null=True,
                         on_delete=django.db.models.deletion.CASCADE,
-                        related_name='tests',
-                        to='app_material.section',
-                        verbose_name='Связанный раздел',
+                        related_name="tests",
+                        to="app_material.section",
+                        verbose_name="Связанный раздел",
                     ),
                 ),
                 (
-                    'owner',
+                    "owner",
                     models.ForeignKey(
                         blank=True,
-                        help_text='Укажите создателя теста',
+                        help_text="Укажите создателя теста",
                         null=True,
                         on_delete=django.db.models.deletion.CASCADE,
-                        related_name='tests',
+                        related_name="tests",
                         to=settings.AUTH_USER_MODEL,
-                        verbose_name='Создатель теста',
+                        verbose_name="Создатель теста",
                     ),
                 ),
             ],
             options={
-                'verbose_name': 'Тест',
-                'verbose_name_plural': 'Тесты',
-                'ordering': ('id',),
+                "verbose_name": "Тест",
+                "verbose_name_plural": "Тесты",
+                "ordering": ("id",),
             },
         ),
         migrations.AddField(
-            model_name='question',
-            name='linked_test',
+            model_name="question",
+            name="linked_test",
             field=models.ForeignKey(
-                help_text='Выберете связанный тест',
+                help_text="Выберете связанный тест",
                 on_delete=django.db.models.deletion.CASCADE,
-                related_name='questions',
-                to='app_test.test',
-                verbose_name='Связанный тест',
+                related_name="questions",
+                to="app_test.test",
+                verbose_name="Связанный тест",
             ),
         ),
         migrations.CreateModel(
-            name='TestTry',
+            name="TestTry",
             fields=[
                 (
-                    'id',
+                    "id",
                     models.BigAutoField(
                         auto_created=True,
                         primary_key=True,
                         serialize=False,
-                        verbose_name='ID',
+                        verbose_name="ID",
                     ),
                 ),
-                ('right_answers_quantity', models.SmallIntegerField()),
+                ("right_answers_quantity", models.SmallIntegerField()),
                 (
-                    'is_passed',
+                    "is_passed",
                     models.BooleanField(
                         default=False,
                         editable=False,
-                        verbose_name='Статус успешности прохождения',
+                        verbose_name="Статус успешности прохождения",
                     ),
                 ),
                 (
-                    'created_at',
+                    "created_at",
                     models.DateTimeField(
                         auto_now_add=True,
-                        verbose_name='Дата создания попытки прохождения теста',
+                        verbose_name="Дата создания попытки прохождения теста",
                     ),
                 ),
                 (
-                    'updated_at',
+                    "updated_at",
                     models.DateTimeField(
                         auto_now=True,
-                        verbose_name='Дата изменения попытки прохождения теста',
+                        verbose_name="Дата изменения попытки прохождения теста",
                     ),
                 ),
                 (
-                    'linked_test',
+                    "linked_test",
                     models.ForeignKey(
-                        help_text='Укажите связанный тест',
+                        help_text="Укажите связанный тест",
                         on_delete=django.db.models.deletion.CASCADE,
-                        related_name='test_tries',
-                        to='app_test.test',
-                        verbose_name='Связанный тест',
+                        related_name="test_tries",
+                        to="app_test.test",
+                        verbose_name="Связанный тест",
                     ),
                 ),
                 (
-                    'linked_user',
+                    "linked_user",
                     models.ForeignKey(
-                        help_text='Укажите связанного пользователя',
+                        help_text="Укажите связанного пользователя",
                         on_delete=django.db.models.deletion.CASCADE,
-                        related_name='test_tries',
+                        related_name="test_tries",
                         to=settings.AUTH_USER_MODEL,
-                        verbose_name='Связанный пользователь',
+                        verbose_name="Связанный пользователь",
                     ),
                 ),
             ],
             options={
-                'verbose_name': 'Попытка сдачи теста',
-                'verbose_name_plural': 'Попытки сдачи теста',
-                'ordering': ('id',),
+                "verbose_name": "Попытка сдачи теста",
+                "verbose_name_plural": "Попытки сдачи теста",
+                "ordering": ("id",),
             },
         ),
     ]

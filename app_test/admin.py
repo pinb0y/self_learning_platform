@@ -8,17 +8,17 @@ class AnswerInlineModel(admin.TabularInline):
     model = Answer
     extra = 4
     fields = (
-        'number',
-        'short_answer',
-        'full_answer',
-        'linked_question',
-        'is_true',
-        'owner',
+        "number",
+        "short_answer",
+        "full_answer",
+        "linked_question",
+        "is_true",
+        "owner",
     )
 
 
 class QuestionAdmin(admin.ModelAdmin):
-    fields = ('name', 'body', 'linked_test', 'owner')
+    fields = ("name", "body", "linked_test", "owner")
     inlines = (AnswerInlineModel,)
 
 

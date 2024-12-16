@@ -6,19 +6,19 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('app_user', '0001_initial'),
+        ("app_user", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='user',
-            name='telegram_nik',
+            model_name="user",
+            name="telegram_nik",
             field=models.CharField(
                 blank=True,
-                help_text='Введите ник телеграма',
+                help_text="Введите ник телеграма",
                 max_length=100,
                 null=True,
-                verbose_name='Телеграм',
+                verbose_name="Телеграм",
             ),
         ),
     ]

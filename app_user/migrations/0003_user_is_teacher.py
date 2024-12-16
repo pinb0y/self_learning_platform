@@ -6,17 +6,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('app_user', '0002_alter_user_telegram_nik'),
+        ("app_user", "0002_alter_user_telegram_nik"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='user',
-            name='is_teacher',
+            model_name="user",
+            name="is_teacher",
             field=models.BooleanField(
                 default=False,
-                help_text='Укажите является ли пользователь учителем',
-                verbose_name='Статус учителя',
+                help_text="Укажите является ли пользователь учителем",
+                verbose_name="Статус учителя",
             ),
         ),
     ]

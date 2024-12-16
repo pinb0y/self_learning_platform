@@ -6,17 +6,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('app_test', '0003_answer_owner'),
+        ("app_test", "0003_answer_owner"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='testtry',
-            name='points_quantity',
+            model_name="testtry",
+            name="points_quantity",
             field=models.SmallIntegerField(
                 default=0,
-                help_text='Укажите количество набранных баллов',
-                verbose_name='Количество набранных баллов',
+                help_text="Укажите количество набранных баллов",
+                verbose_name="Количество набранных баллов",
             ),
         ),
     ]

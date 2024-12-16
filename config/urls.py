@@ -18,10 +18,10 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('user/', include('app_user.urls', namespace='user')),
-    path('', include('app_material.urls', namespace='section')),
-    path('test/', include('app_test.urls', namespace='test')),
+    path("admin/", admin.site.urls),
+    path("user/", include("app_user.urls", namespace="user")),
+    path("", include("app_material.urls", namespace="section")),
+    path("test/", include("app_test.urls", namespace="test")),
     path(
         "docs/",
         schema_view.with_ui("swagger", cache_timeout=0),

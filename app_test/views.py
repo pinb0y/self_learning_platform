@@ -152,7 +152,7 @@ class QuizAPIView(APIView):
         """Выводит тест с вопросами и вариантами ответов для прохождения"""
 
         user = self.request.user
-        test_item = get_object_or_404(Test, pk=kwargs['pk'])
+        test_item = get_object_or_404(Test, pk=kwargs["pk"])
         test_try, _ = TestTry.objects.get_or_create(
             linked_user=user, linked_test=test_item
         )
@@ -166,7 +166,7 @@ class QuizAPIView(APIView):
         """Принимает ответы пользователя и выводит результаты теста"""
 
         user = self.request.user
-        user_answer = request.data.get('answers')
+        user_answer = request.data.get("answers")
         test_item = get_object_or_404(Test, pk=pk)
         questions = Question.objects.filter(linked_test=test_item)
         test_try, _ = TestTry.objects.get_or_create(
@@ -199,14 +199,14 @@ class QuizAPIView(APIView):
 
         if test_try.is_passed:
             response = {
-                'result': 'Тест успешно пройдет. Поздравляю!',
-                'right_answers': f'Отвечено на {test_try.right_answers_quantity} из {test_item.questions_quantity}',
-                'scores': f'Набрано {test_try.points_quantity} очков.',
+                "result": "Тест успешно пройдет. Поздравляю!",
+                "right_answers": f"Отвечено на {test_try.right_answers_quantity} из {test_item.questions_quantity}",
+                "scores": f"Набрано {test_try.points_quantity} очков.",
             }
         else:
             response = {
-                'results': 'К сожалению тест не пройден',
-                'wrong_answers_quantity': f'Вы ответили неправильно на {test_item.questions_quantity - test_try.right_answers_quantity} вопросов',
-                'wrong_answers': f'Не отвеченные вопросы {questions_with_wrong_answer}',
+                "results": "К сожалению тест не пройден",
+                "wrong_answers_quantity": f"Вы ответили неправильно на {test_item.questions_quantity - test_try.right_answers_quantity} вопросов",
+                "wrong_answers": f"Не отвеченные вопросы {questions_with_wrong_answer}",
             }
         return Response(response, status.HTTP_200_OK)

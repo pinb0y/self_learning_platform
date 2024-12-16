@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('app_material', '0003_alter_material_owner_alter_section_owner_and_more'),
+        ("app_material", "0003_alter_material_owner_alter_section_owner_and_more"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='material',
-            name='slug',
-            field=models.SlugField(null=True, unique=True, verbose_name='Слаг'),
+            model_name="material",
+            name="slug",
+            field=models.SlugField(null=True, unique=True, verbose_name="Слаг"),
         ),
         migrations.AddField(
-            model_name='section',
-            name='slug',
-            field=models.SlugField(null=True, unique=True, verbose_name='Слаг'),
+            model_name="section",
+            name="slug",
+            field=models.SlugField(null=True, unique=True, verbose_name="Слаг"),
         ),
     ]

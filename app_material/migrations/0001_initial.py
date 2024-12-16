@@ -15,234 +15,234 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Section',
+            name="Section",
             fields=[
                 (
-                    'id',
+                    "id",
                     models.BigAutoField(
                         auto_created=True,
                         primary_key=True,
                         serialize=False,
-                        verbose_name='ID',
+                        verbose_name="ID",
                     ),
                 ),
                 (
-                    'title',
+                    "title",
                     models.CharField(
-                        help_text='Введите название раздела',
+                        help_text="Введите название раздела",
                         max_length=100,
-                        verbose_name='Название раздела',
+                        verbose_name="Название раздела",
                     ),
                 ),
                 (
-                    'description',
+                    "description",
                     models.CharField(
                         blank=True,
-                        help_text='Напишите краткое описание',
+                        help_text="Напишите краткое описание",
                         max_length=500,
                         null=True,
-                        verbose_name='Краткое описание раздела',
+                        verbose_name="Краткое описание раздела",
                     ),
                 ),
                 (
-                    'preview',
+                    "preview",
                     models.ImageField(
                         blank=True,
-                        help_text='Добавьте картинку раздела',
+                        help_text="Добавьте картинку раздела",
                         null=True,
-                        upload_to='app_material/section/preview',
-                        verbose_name='Картинка раздела',
+                        upload_to="app_material/section/preview",
+                        verbose_name="Картинка раздела",
                     ),
                 ),
                 (
-                    'created_at',
+                    "created_at",
                     models.DateTimeField(
-                        auto_now_add=True, verbose_name='Дата создания раздела'
+                        auto_now_add=True, verbose_name="Дата создания раздела"
                     ),
                 ),
                 (
-                    'updated_at',
+                    "updated_at",
                     models.DateTimeField(
-                        auto_now=True, verbose_name='Дата изменения раздела'
+                        auto_now=True, verbose_name="Дата изменения раздела"
                     ),
                 ),
                 (
-                    'is_published',
+                    "is_published",
                     models.BooleanField(
                         default=True,
-                        help_text='укажите статус публичности',
-                        verbose_name='Статус публичности',
+                        help_text="укажите статус публичности",
+                        verbose_name="Статус публичности",
                     ),
                 ),
                 (
-                    'owner',
+                    "owner",
                     models.ForeignKey(
-                        help_text='Укажите автора',
+                        help_text="Укажите автора",
                         on_delete=django.db.models.deletion.CASCADE,
-                        related_name='sections',
+                        related_name="sections",
                         to=settings.AUTH_USER_MODEL,
-                        verbose_name='Автор',
+                        verbose_name="Автор",
                     ),
                 ),
             ],
             options={
-                'verbose_name': 'Раздел',
-                'verbose_name_plural': 'Разделы',
-                'ordering': ('id',),
+                "verbose_name": "Раздел",
+                "verbose_name_plural": "Разделы",
+                "ordering": ("id",),
             },
         ),
         migrations.CreateModel(
-            name='Material',
+            name="Material",
             fields=[
                 (
-                    'id',
+                    "id",
                     models.BigAutoField(
                         auto_created=True,
                         primary_key=True,
                         serialize=False,
-                        verbose_name='ID',
+                        verbose_name="ID",
                     ),
                 ),
                 (
-                    'title',
+                    "title",
                     models.CharField(
-                        help_text='Введите название статьи',
+                        help_text="Введите название статьи",
                         max_length=100,
-                        verbose_name='Название статьи',
+                        verbose_name="Название статьи",
                     ),
                 ),
                 (
-                    'description',
+                    "description",
                     models.CharField(
                         blank=True,
-                        help_text='Напишите краткое описание',
+                        help_text="Напишите краткое описание",
                         max_length=500,
                         null=True,
-                        verbose_name='Краткое описание статьи',
+                        verbose_name="Краткое описание статьи",
                     ),
                 ),
                 (
-                    'body',
+                    "body",
                     models.TextField(
-                        help_text='Введите текст статьи', verbose_name='Текст статьи'
+                        help_text="Введите текст статьи", verbose_name="Текст статьи"
                     ),
                 ),
                 (
-                    'preview',
+                    "preview",
                     models.ImageField(
                         blank=True,
-                        help_text='Добавьте картинку статьи',
+                        help_text="Добавьте картинку статьи",
                         null=True,
-                        upload_to='app_material/material/preview',
-                        verbose_name='Картинка материала',
+                        upload_to="app_material/material/preview",
+                        verbose_name="Картинка материала",
                     ),
                 ),
                 (
-                    'created_at',
+                    "created_at",
                     models.DateTimeField(
-                        auto_now_add=True, verbose_name='Дата создания статьи'
+                        auto_now_add=True, verbose_name="Дата создания статьи"
                     ),
                 ),
                 (
-                    'updated_at',
+                    "updated_at",
                     models.DateTimeField(
-                        auto_now=True, verbose_name='Дата изменения статьи'
+                        auto_now=True, verbose_name="Дата изменения статьи"
                     ),
                 ),
                 (
-                    'is_published',
+                    "is_published",
                     models.BooleanField(
                         default=True,
-                        help_text='укажите статус публичности',
-                        verbose_name='Статус публичности',
+                        help_text="укажите статус публичности",
+                        verbose_name="Статус публичности",
                     ),
                 ),
                 (
-                    'owner',
+                    "owner",
                     models.ForeignKey(
-                        help_text='Укажите автора',
+                        help_text="Укажите автора",
                         on_delete=django.db.models.deletion.CASCADE,
-                        related_name='materials',
+                        related_name="materials",
                         to=settings.AUTH_USER_MODEL,
-                        verbose_name='Автор',
+                        verbose_name="Автор",
                     ),
                 ),
                 (
-                    'section',
+                    "section",
                     models.ForeignKey(
-                        help_text='Укажите Раздел статьи',
+                        help_text="Укажите Раздел статьи",
                         on_delete=django.db.models.deletion.CASCADE,
-                        related_name='materials',
-                        to='app_material.section',
-                        verbose_name='Раздел',
+                        related_name="materials",
+                        to="app_material.section",
+                        verbose_name="Раздел",
                     ),
                 ),
             ],
             options={
-                'verbose_name': 'Статья',
-                'verbose_name_plural': 'Статьи',
-                'ordering': ('id',),
+                "verbose_name": "Статья",
+                "verbose_name_plural": "Статьи",
+                "ordering": ("id",),
             },
         ),
         migrations.CreateModel(
-            name='Subscription',
+            name="Subscription",
             fields=[
                 (
-                    'id',
+                    "id",
                     models.BigAutoField(
                         auto_created=True,
                         primary_key=True,
                         serialize=False,
-                        verbose_name='ID',
+                        verbose_name="ID",
                     ),
                 ),
                 (
-                    'created_at',
+                    "created_at",
                     models.DateTimeField(
-                        auto_now_add=True, verbose_name='Дата подписки'
+                        auto_now_add=True, verbose_name="Дата подписки"
                     ),
                 ),
                 (
-                    'updated_at',
+                    "updated_at",
                     models.DateTimeField(
-                        auto_now=True, verbose_name='Дата изменения подписки'
+                        auto_now=True, verbose_name="Дата изменения подписки"
                     ),
                 ),
                 (
-                    'is_active',
+                    "is_active",
                     models.BooleanField(
                         default=False,
-                        help_text='укажите статус активности',
-                        verbose_name='Статус активности',
+                        help_text="укажите статус активности",
+                        verbose_name="Статус активности",
                     ),
                 ),
                 (
-                    'owner',
+                    "owner",
                     models.ForeignKey(
-                        help_text='Укажите пользователя подписки',
+                        help_text="Укажите пользователя подписки",
                         on_delete=django.db.models.deletion.CASCADE,
-                        related_name='subscriptions',
+                        related_name="subscriptions",
                         to=settings.AUTH_USER_MODEL,
-                        verbose_name='Пользователь',
+                        verbose_name="Пользователь",
                     ),
                 ),
                 (
-                    'section',
+                    "section",
                     models.ForeignKey(
                         blank=True,
-                        help_text='Укажите материал для подписки',
+                        help_text="Укажите материал для подписки",
                         null=True,
                         on_delete=django.db.models.deletion.CASCADE,
-                        related_name='subscriptions',
-                        to='app_material.section',
-                        verbose_name='Секция',
+                        related_name="subscriptions",
+                        to="app_material.section",
+                        verbose_name="Секция",
                     ),
                 ),
             ],
             options={
-                'verbose_name': 'Подписка',
-                'verbose_name_plural': 'Подписки',
-                'ordering': ('id',),
+                "verbose_name": "Подписка",
+                "verbose_name_plural": "Подписки",
+                "ordering": ("id",),
             },
         ),
     ]

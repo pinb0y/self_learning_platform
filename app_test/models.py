@@ -6,252 +6,252 @@ from app_user.models import User
 
 class Test(models.Model):
     name = models.CharField(
-        verbose_name='Название теста',
+        verbose_name="Название теста",
         max_length=100,
-        help_text='Введите название теста',
+        help_text="Введите название теста",
     )
     description = models.TextField(
-        verbose_name='Описание теста',
-        help_text='Введите описание теста',
+        verbose_name="Описание теста",
+        help_text="Введите описание теста",
         null=True,
         blank=True,
     )
     preview = models.ImageField(
-        verbose_name='Картинка теста',
-        upload_to='app_test/test/preview',
-        help_text='Добавьте картинку теста',
+        verbose_name="Картинка теста",
+        upload_to="app_test/test/preview",
+        help_text="Добавьте картинку теста",
         null=True,
         blank=True,
     )
     linked_section = models.ForeignKey(
         Section,
-        verbose_name='Связанный раздел',
+        verbose_name="Связанный раздел",
         on_delete=models.CASCADE,
-        related_name='tests',
-        help_text='Укажите связанный раздел',
+        related_name="tests",
+        help_text="Укажите связанный раздел",
         null=True,
         blank=True,
     )
     linked_material = models.ForeignKey(
         Material,
-        verbose_name='Связанный материал',
+        verbose_name="Связанный материал",
         on_delete=models.CASCADE,
-        related_name='tests',
-        help_text='Укажите связанный материал',
+        related_name="tests",
+        help_text="Укажите связанный материал",
         null=True,
         blank=True,
     )
     owner = models.ForeignKey(
         User,
-        verbose_name='Создатель теста',
+        verbose_name="Создатель теста",
         on_delete=models.CASCADE,
-        related_name='tests',
-        help_text='Укажите создателя теста',
+        related_name="tests",
+        help_text="Укажите создателя теста",
         null=True,
         blank=True,
     )
     questions_quantity = models.PositiveSmallIntegerField(
-        verbose_name='Количество вопросов в тесте',
+        verbose_name="Количество вопросов в тесте",
         default=10,
-        help_text='Укажите количество вопросов в тексте',
+        help_text="Укажите количество вопросов в тексте",
     )
     lead_time = models.PositiveSmallIntegerField(
-        verbose_name='Время на выполнение теста в минутах',
+        verbose_name="Время на выполнение теста в минутах",
         default=10,
-        help_text='Укажите количество минут на выполнение теста',
+        help_text="Укажите количество минут на выполнение теста",
     )
     points_to_success = models.PositiveSmallIntegerField(
-        verbose_name='Количество баллов для успешного прохождения',
+        verbose_name="Количество баллов для успешного прохождения",
         default=90,
-        help_text='Укажите количество баллов для успешного прохождения',
+        help_text="Укажите количество баллов для успешного прохождения",
     )
     created_at = models.DateTimeField(
-        verbose_name='Дата создания теста', auto_now_add=True
+        verbose_name="Дата создания теста", auto_now_add=True
     )
     updated_at = models.DateTimeField(
-        verbose_name='Дата изменения теста', auto_now=True
+        verbose_name="Дата изменения теста", auto_now=True
     )
     is_published = models.BooleanField(
-        verbose_name='Статус публичности',
+        verbose_name="Статус публичности",
         default=True,
-        help_text='укажите статус публичности',
+        help_text="укажите статус публичности",
     )
 
     class Meta:
-        verbose_name = 'Тест'
-        verbose_name_plural = 'Тесты'
-        ordering = ('id',)
+        verbose_name = "Тест"
+        verbose_name_plural = "Тесты"
+        ordering = ("id",)
 
     def __str__(self):
-        return f'{self.name}'
+        return f"{self.name}"
 
 
 class Question(models.Model):
     name = models.CharField(
-        verbose_name='Название вопроса',
+        verbose_name="Название вопроса",
         max_length=100,
-        help_text='Введите название вопроса',
+        help_text="Введите название вопроса",
     )
     body = models.TextField(
-        verbose_name='Текст вопроса', help_text='Введите текст вопроса'
+        verbose_name="Текст вопроса", help_text="Введите текст вопроса"
     )
     picture = models.ImageField(
-        verbose_name='Картинка вопроса',
-        upload_to='app_test/questions/picture',
-        help_text='Добавьте картинку вопроса',
+        verbose_name="Картинка вопроса",
+        upload_to="app_test/questions/picture",
+        help_text="Добавьте картинку вопроса",
         null=True,
         blank=True,
     )
     linked_test = models.ForeignKey(
         Test,
-        verbose_name='Связанный тест',
+        verbose_name="Связанный тест",
         on_delete=models.CASCADE,
-        related_name='questions',
-        help_text='Выберете связанный тест',
+        related_name="questions",
+        help_text="Выберете связанный тест",
     )
     points_per_answer = models.PositiveSmallIntegerField(
-        verbose_name='Количество очков за ответ',
+        verbose_name="Количество очков за ответ",
         default=10,
-        help_text='Введите количество очков за правильный ответ',
+        help_text="Введите количество очков за правильный ответ",
     )
     answers_quantity = models.PositiveSmallIntegerField(
-        verbose_name='Количество вариантов ответа',
+        verbose_name="Количество вариантов ответа",
         default=4,
-        help_text='Укажите количество правильных ответов',
+        help_text="Укажите количество правильных ответов",
     )
     owner = models.ForeignKey(
         User,
-        verbose_name='Создатель вопроса',
+        verbose_name="Создатель вопроса",
         on_delete=models.CASCADE,
-        related_name='questions',
-        help_text='Укажите создателя вопроса',
+        related_name="questions",
+        help_text="Укажите создателя вопроса",
         null=True,
         blank=True,
     )
     created_at = models.DateTimeField(
-        verbose_name='Дата создания вопроса', auto_now_add=True
+        verbose_name="Дата создания вопроса", auto_now_add=True
     )
     updated_at = models.DateTimeField(
-        verbose_name='Дата изменения вопроса', auto_now=True
+        verbose_name="Дата изменения вопроса", auto_now=True
     )
     is_published = models.BooleanField(
-        verbose_name='Статус публичности',
+        verbose_name="Статус публичности",
         default=True,
-        help_text='укажите статус публичности',
+        help_text="укажите статус публичности",
     )
 
     class Meta:
-        verbose_name = 'Вопрос'
-        verbose_name_plural = 'Вопросы'
-        ordering = ('id',)
+        verbose_name = "Вопрос"
+        verbose_name_plural = "Вопросы"
+        ordering = ("id",)
 
     def __str__(self):
-        return f'{self.body}'
+        return f"{self.body}"
 
 
 class Answer(models.Model):
     number = models.PositiveSmallIntegerField(
-        verbose_name='Порядковый номер вопроса',
+        verbose_name="Порядковый номер вопроса",
         default=1,
-        help_text='Укажите порядковый номер вопроса',
+        help_text="Укажите порядковый номер вопроса",
     )
     short_answer = models.CharField(
-        verbose_name='Краткий ответ', max_length=200, help_text='Введите краткий ответ'
+        verbose_name="Краткий ответ", max_length=200, help_text="Введите краткий ответ"
     )
     full_answer = models.TextField(
-        verbose_name='Полный текста ответа',
-        help_text='Введите полный текст ответа',
+        verbose_name="Полный текста ответа",
+        help_text="Введите полный текст ответа",
         null=True,
         blank=True,
     )
     picture = models.ImageField(
-        verbose_name='Картинка ответа',
-        upload_to='app_test/answer/picture',
-        help_text='Добавьте картинку ответа',
+        verbose_name="Картинка ответа",
+        upload_to="app_test/answer/picture",
+        help_text="Добавьте картинку ответа",
         null=True,
         blank=True,
     )
     linked_question = models.ForeignKey(
         Question,
-        verbose_name='Связанный вопрос',
+        verbose_name="Связанный вопрос",
         on_delete=models.CASCADE,
-        related_name='answers',
-        help_text='Выберете связанный вопрос',
+        related_name="answers",
+        help_text="Выберете связанный вопрос",
     )
     is_true = models.BooleanField(
-        verbose_name='Статус верного ответа',
+        verbose_name="Статус верного ответа",
         default=False,
-        help_text='Укажите является ли ответ верным',
+        help_text="Укажите является ли ответ верным",
     )
     owner = models.ForeignKey(
         User,
-        verbose_name='Создатель ответа',
+        verbose_name="Создатель ответа",
         on_delete=models.CASCADE,
-        related_name='answers',
-        help_text='Укажите создателя ответа',
+        related_name="answers",
+        help_text="Укажите создателя ответа",
         null=True,
         blank=True,
     )
     created_at = models.DateTimeField(
-        verbose_name='Дата создания ответа', auto_now_add=True
+        verbose_name="Дата создания ответа", auto_now_add=True
     )
     updated_at = models.DateTimeField(
-        verbose_name='Дата изменения ответа', auto_now=True
+        verbose_name="Дата изменения ответа", auto_now=True
     )
     is_published = models.BooleanField(
-        verbose_name='Статус публичности',
+        verbose_name="Статус публичности",
         default=True,
-        help_text='укажите статус публичности',
+        help_text="укажите статус публичности",
     )
 
     class Meta:
-        verbose_name = 'Ответ'
-        verbose_name_plural = 'Ответы'
-        ordering = ('id',)
+        verbose_name = "Ответ"
+        verbose_name_plural = "Ответы"
+        ordering = ("id",)
 
     def __str__(self):
-        return f'{self.short_answer}'
+        return f"{self.short_answer}"
 
 
 class TestTry(models.Model):
     linked_test = models.ForeignKey(
         Test,
-        verbose_name='Связанный тест',
+        verbose_name="Связанный тест",
         on_delete=models.CASCADE,
-        related_name='test_tries',
-        help_text='Укажите связанный тест',
+        related_name="test_tries",
+        help_text="Укажите связанный тест",
     )
     linked_user = models.ForeignKey(
         User,
-        verbose_name='Связанный пользователь',
+        verbose_name="Связанный пользователь",
         on_delete=models.CASCADE,
-        related_name='test_tries',
-        help_text='Укажите связанного пользователя',
+        related_name="test_tries",
+        help_text="Укажите связанного пользователя",
     )
     right_answers_quantity = models.SmallIntegerField(
-        verbose_name='Количество правильных ответов',
+        verbose_name="Количество правильных ответов",
         default=0,
-        help_text='Укажите количество правильных ответов',
+        help_text="Укажите количество правильных ответов",
     )
     points_quantity = models.SmallIntegerField(
-        verbose_name='Количество набранных баллов',
+        verbose_name="Количество набранных баллов",
         default=0,
-        help_text='Укажите количество набранных баллов',
+        help_text="Укажите количество набранных баллов",
     )
     is_passed = models.BooleanField(
-        verbose_name='Статус успешности прохождения', default=False
+        verbose_name="Статус успешности прохождения", default=False
     )
     created_at = models.DateTimeField(
-        verbose_name='Дата создания попытки прохождения теста', auto_now_add=True
+        verbose_name="Дата создания попытки прохождения теста", auto_now_add=True
     )
     updated_at = models.DateTimeField(
-        verbose_name='Дата изменения попытки прохождения теста', auto_now=True
+        verbose_name="Дата изменения попытки прохождения теста", auto_now=True
     )
 
     class Meta:
-        verbose_name = 'Попытка сдачи теста'
-        verbose_name_plural = 'Попытки сдачи теста'
-        ordering = ('id',)
+        verbose_name = "Попытка сдачи теста"
+        verbose_name_plural = "Попытки сдачи теста"
+        ordering = ("id",)
 
     def __str__(self):
-        return f'{self.linked_test} - {self.linked_user}'
+        return f"{self.linked_test} - {self.linked_user}"

@@ -9,13 +9,13 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('email', 'telegram_nik', 'is_teacher', 'test_tries')
+        fields = ("email", "telegram_nik", "is_teacher", "test_tries")
 
 
 class UserRegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = (
-            'email',
-            'password',
+            "email",
+            "password",
         )

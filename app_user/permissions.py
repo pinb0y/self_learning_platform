@@ -5,9 +5,9 @@ class IsOwner(permissions.BasePermission):
     """Класс для проверки доступа если пользователь владельца объекта"""
 
     def has_object_permission(self, request, view, obj):
-        if hasattr(obj, 'user'):
+        if hasattr(obj, "user"):
             return request.user == obj.user
-        elif hasattr(obj, 'email'):
+        elif hasattr(obj, "email"):
             return request.user.email == obj.email
         return False
 
