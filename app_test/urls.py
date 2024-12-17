@@ -29,6 +29,6 @@ urlpatterns = [
     path("answer/list/", AnswerListAPIView.as_view(), name="answer-list"),
     path("answer/<int:pk>/", AnswerAPIView.as_view(), name="answer-detail"),
     path("quiz/<int:pk>/", QuizAPIView.as_view(), name="quiz"),
-    path("test_try/list/", TestTryListAPIView.as_view(), name="test-try-list"),
-    path("test_try/<int:pk>/", TestTryAPIView.as_view(), name="test-try-detail"),
+    path("test-try/list/", TestTryListAPIView.as_view(), name="test-try-list"),
+    path("test-try/<int:pk>/", TestTryAPIView.as_view(), name="test-try-detail"),
 ]

@@ -19,6 +19,7 @@ django-filter = "^24.3"
 unidecode = "^1.3.8"
 python-dotenv = "^1.0.1"
 black = "^24.10.0"
+coverage = "^7.6.9"
 
 
 [build-system]

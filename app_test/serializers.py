@@ -10,6 +10,7 @@ class AnswerSerializer(serializers.ModelSerializer):
         model = Answer
         fields = (
             "number",
+            "linked_question",
             "short_answer",
             "full_answer",
             "is_true",
@@ -21,13 +22,13 @@ class QuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Question
-        fields = ("name", "body")
+        fields = ("name", "body", "linked_test")
 
 
 class QuizQuestionSerializer(serializers.ModelSerializer):
     """Сериалайзер для вывода вопроса для теста"""
 
-    answers = AnswerSerializer(many=True)
+    answers = AnswerSerializer(many=True, read_only=True)
 
     class Meta:
         model = Question
@@ -37,7 +38,7 @@ class QuizQuestionSerializer(serializers.ModelSerializer):
 class TestSerializer(serializers.ModelSerializer):
     """Сериалайзер для модели тест"""
 
-    questions = QuestionSerializer(many=True)
+    questions = QuestionSerializer(many=True, read_only=True)
 
     class Meta:
         model = Test
@@ -53,7 +54,7 @@ class TestSerializer(serializers.ModelSerializer):
 class QuizSerializer(serializers.ModelSerializer):
     """Сериалайзер для вывода теста"""
 
-    questions = QuizQuestionSerializer(many=True)
+    questions = QuizQuestionSerializer(many=True, read_only=True)
 
     class Meta:
         model = Test

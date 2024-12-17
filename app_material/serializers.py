@@ -20,6 +20,7 @@ class SectionSerializer(serializers.ModelSerializer):
         model = Section
         fields = ("id", "title", "slug", "description", "preview", "owner", "materials")
 
+
 # class SubscriptionSerializer(serializers.ModelSerializer):
 #     """Сериалайзер для отображения подписок. Планируется в будущем"""
 #
